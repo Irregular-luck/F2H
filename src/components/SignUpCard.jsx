@@ -5,6 +5,7 @@ import { PiPlantLight } from "react-icons/pi";
 export default function SignUpCard({ onNavigate }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -16,7 +17,7 @@ export default function SignUpCard({ onNavigate }) {
       return;
     }
 
-    console.log("Registering user with:", { name, email, password });
+    console.log("Registering user with:", { name, email, phone, password });
   };
 
   return (
@@ -49,6 +50,20 @@ export default function SignUpCard({ onNavigate }) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="example@mail.com"
+              required 
+            />
+          </div>
+
+          <div className="input-block">
+            <label htmlFor="phone-signup-input">Phone</label>
+            <input 
+              type="tel" 
+              id="phone-input"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="0123456789"
+              pattern="[0-9]{10}"
+              title="pls enter 10 digits"
               required 
             />
           </div>
