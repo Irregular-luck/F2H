@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SignInCard.css';
 import { PiPlantLight } from "react-icons/pi";
 
-export default function SignInCard() {
+export default function SignInCard({onNavigate}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -48,7 +48,14 @@ export default function SignInCard() {
 
         <div className="auth-footer">
           <p className="signup-prompt">
-            Don't have an account? <a href="#signup" className="accent-link">Sign up</a>
+            Don't have an account? <a href="#signup" 
+            className="accent-link" 
+            onClick={(e) => {
+                e.preventDefault();
+                onNavigate('signup'); 
+              }}
+              >
+              Sign up</a>
           </p>
           <a href="#market" className="back-navigation">← Back to market</a>
         </div>
