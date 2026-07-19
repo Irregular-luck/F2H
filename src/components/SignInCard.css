@@ -31,7 +31,7 @@
 }
 
 .main-title {
-  font-family: 'Sofia', cursive;
+  font-family: var(--serif);
   font-size: 1.85rem;
   font-weight: 800;
   color: #1a231a;

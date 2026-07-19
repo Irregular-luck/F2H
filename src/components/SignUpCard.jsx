@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './SignUpCard.css';
-import { PiPlantLight } from "react-icons/pi";
+import { LuSprout } from "react-icons/lu";
 
-export default function SignUpCard({ onNavigate }) {
+export default function SignUpCard({ onNavigate, onLogin }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -18,13 +18,14 @@ export default function SignUpCard({ onNavigate }) {
     }
 
     console.log("Registering user with:", { name, email, phone, password });
+    onLogin?.(email);
   };
 
   return (
     <div className="layout-wrapper">
       <div className="auth-card">
         <div className="card-brand-logo">
-            <PiPlantLight className="logo-icon"/>
+            <LuSprout className="logo-icon"/>
             </div>
         <h2 className="main-title">Create your account</h2>
         <p className="sub-title">Join F2H and start exploring the market</p>

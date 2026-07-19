@@ -1,24 +1,40 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import { BsCart4} from "react-icons/bs";
-import { PiPlantLight } from "react-icons/pi";
+import { LuSprout, LuLayoutDashboard, LuPackage, LuShoppingBasket, LuLogOut } from 'react-icons/lu';
 
+const links = [
+  { to: '/', label: 'Market', icon: null, end: true },
+  { to: '/dashboard', label: 'Dashboard', icon: <LuLayoutDashboard /> },
+  { to: '/orders', label: 'Orders', icon: <LuPackage /> },
+  { to: '/cart', label: 'Cart', icon: <LuShoppingBasket /> },
+];
 
-export default function Navbar() {
+export default function Navbar({ onSignOut }) {
   return (
     <nav className="navbar">
-      <div className="nav-brand">
+      <NavLink to="/" className="nav-brand">
         <div className="brand-logo">
-          <PiPlantLight className="logo-icon"/>
+          <LuSprout className="logo-icon" />
         </div>
         <span className="brand-name">F2H</span>
-      </div>
+      </NavLink>
+
       <div className="nav-menu">
-        <a href="#market" className="menu-item">Market</a>
-        <a href="#cart" className="menu-item cart-item">
-          <BsCart4 className="cart-icon"/>
-        </a>
-        <button className="nav-signin-btn">Sign in</button>
+        {links.map((l) => (
+          <NavLink
+            key={l.to}
+            to={l.to}
+            end={l.end}
+            className={({ isActive }) => `menu-item${isActive ? ' active' : ''}`}
+          >
+            {l.icon}
+            {l.label}
+          </NavLink>
+        ))}
+        <button className="menu-item signout" onClick={onSignOut}>
+          <LuLogOut />
+          Sign out
+        </button>
       </div>
     </nav>
   );

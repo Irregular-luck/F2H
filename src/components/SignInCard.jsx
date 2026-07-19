@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './SignInCard.css';
-import { PiPlantLight } from "react-icons/pi";
+import { LuSprout } from "react-icons/lu";
 
-export default function SignInCard({onNavigate}) {
+export default function SignInCard({onNavigate, onLogin}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("Form values submitted:", { email, password });
+    onLogin?.(email);
   };
 
   return (
     <div className="layout-wrapper">
       <div className="auth-card">
         <div className="card-brand-logo">
-            <PiPlantLight />
+            <LuSprout />
 </div>
         <h2 className="main-title">Welcome back</h2>
         <p className="sub-title">Sign in to your F2H account</p>
